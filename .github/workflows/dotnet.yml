@@ -27,7 +27,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       
     - name: Publish application
-      run: dotnet publish --configuration Release --output build
+      run: dotnet publish BlazorApp1/BlazorApp1.csproj -c Release -o release --nologo
       
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
