@@ -1,0 +1,23 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inject IWebAssemblyHostEnvironment test
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<h1>@test1</h1>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        test1 = test.BaseAddress;
+    }
+
+    public string test1 { get; set; }
+}
