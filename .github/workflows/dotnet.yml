@@ -28,6 +28,13 @@ jobs:
       
     - name: Publish application
       run: dotnet publish BlazorApp1/BlazorApp1.csproj -c Release -o release --nologo
+    
+    - name: Rewrite base href
+      if: success()
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: ${{ env.PUBLISH_DIR }}/index.html
+        base_href: BlazorWA
       
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
