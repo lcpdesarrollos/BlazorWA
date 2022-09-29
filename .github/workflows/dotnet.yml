@@ -27,7 +27,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       
     - name: Publish application
-      run: dotnet publish -c Release
+      run: dotnet publish --configuration Release --output build
       
     - name: Deploy to Github Pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
