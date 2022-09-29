@@ -30,11 +30,15 @@ jobs:
       run: dotnet publish -c Release
       
     - name: Rewrite base href
-      uses: lcpdesarrollos/ghaction-rewrite-base-href@v1
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
       with:
         html_path: ${{ env.PUBLISH_DIR }}/index.html
         base_href: ./BlazorWA/
-        
+    
+    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+    - name: Add .nojekyll file
+      run: touch ${{ env.PUBLISH_DIR }}/.nojekyll
+
     - name: GitHub Pages
       if: success()
       uses: JamesIves/github-pages-deploy-action@releases/v3
